@@ -1,0 +1,40 @@
+.cof { width: 100%; display: flex; justify-content: center; padding: 8px 0; }
+.cof__svg { width: 260px; height: 260px; }
+.cof__seg { cursor: pointer; }
+.cof__outer {
+  fill: var(--bg-elevated);
+  stroke: var(--bg);
+  stroke-width: 2;
+  transition: fill 0.15s;
+}
+.cof__outer--active { fill: var(--accent); }
+.cof__outer:hover { fill: var(--bg-hover); }
+.cof__inner {
+  fill: var(--bg-surface);
+  stroke: var(--bg);
+  stroke-width: 1.5;
+  transition: fill 0.15s;
+}
+.cof__inner--active { fill: rgba(201,168,76,0.25); }
+.cof__major-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--text-sec);
+  pointer-events: none;
+}
+.cof__major-label--active { fill: #0a0806; }
+.cof__minor-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 400;
+  fill: var(--text-muted);
+  pointer-events: none;
+}
+.cof__center { fill: var(--bg-surface); stroke: var(--border-l); stroke-width: 2; }
+.cof__center-label {
+  font-family: var(--font-disp);
+  font-size: 14px;
+  font-weight: 600;
+  fill: var(--accent);
+}

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(npm start *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
+      "Bash(node -e ' *)",
+      "Bash(npx playwright *)",
+      "Bash(pip show *)",
+      "Bash(python3 -c \"import playwright; print\\(playwright.__file__\\)\")",
+      "Bash(pkill -f \"vite --port 5174\")",
+      "Bash(mkdir -p \"/home/fango/Área de Trabalho/Trabalho_IHC2/genjazzui/screenshots\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5175/)"
+    ]
+  }
+}

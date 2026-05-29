@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root,
+[data-theme="dark"] {
+  --bg:           #0e0c0a;
+  --bg-surface:   #1a1612;
+  --bg-elevated:  #231f1a;
+  --bg-hover:     #2d2720;
+  --accent:       #c9a84c;
+  --accent-h:     #dfbd65;
+  --accent-dim:   rgba(201, 168, 76, 0.12);
+  --accent-bdr:   rgba(201, 168, 76, 0.28);
+  --text:         #f0ebe0;
+  --text-sec:     #a09080;
+  --text-muted:   #5a5048;
+  --border:       #2e2820;
+  --border-l:     #3d3628;
+  --danger:       #d95555;
+  --danger-dim:   rgba(217, 85, 85, 0.12);
+  --success:      #5cb88a;
+  --font-disp:    'Inter', -apple-system, sans-serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-full: 9999px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.45);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.55);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.65);
+}
+
+
+/* ── Colorblind-friendly palettes ── */
+/* Deuteranopia / Protanopia: dificuldade com vermelho-verde → azul + laranja */
+[data-colorblind="deuteranopia"],
+[data-colorblind="protanopia"] {
+  --accent:       #56B4E9;
+  --accent-h:     #79caff;
+  --accent-dim:   rgba(86, 180, 233, 0.12);
+  --accent-bdr:   rgba(86, 180, 233, 0.30);
+  --danger:       #E69F00;
+  --danger-dim:   rgba(230, 159, 0, 0.12);
+  --success:      #0072B2;
+}
+
+/* Tritanopia: dificuldade com azul-amarelo → vermelho-laranja + verde */
+[data-colorblind="tritanopia"] {
+  --accent:       #D55E00;
+  --accent-h:     #E67820;
+  --accent-dim:   rgba(213, 94, 0, 0.12);
+  --accent-bdr:   rgba(213, 94, 0, 0.30);
+  --danger:       #CC3311;
+  --danger-dim:   rgba(204, 51, 17, 0.12);
+  --success:      #009E73;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+select {
+  font-family: var(--font-body);
+}
+
