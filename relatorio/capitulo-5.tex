@@ -1,0 +1,21 @@
+\chapter{Alterações ao Protótipo da 1.\textsuperscript{a} Parte}
+\label{chap:alteracoes}
+
+Ao passar do protótipo para a implementação real surgiram três situações em que foi necessário ajustar ou acrescentar funcionalidades. Esta secção descreve o que mudou e porquê.
+
+\section{Acessibilidade Cromática}
+\label{chap5:sec:alt1}
+
+A funcionalidade de modos de daltonismo não estava prevista no protótipo original. A necessidade tornou-se óbvia quando percebemos que o dourado da paleta padrão tem uma componente de verde que cria problemas para utilizadores com deuteranopia --- o tipo de daltonismo mais comum, que afeta cerca de 5--6\% da população masculina~\cite{birch2012}. Ignorar este problema seria uma barreira de exclusão desnecessária.
+
+A solução foi adicionar três modos alternativos no perfil, cada um com uma paleta baseada nos trabalhos de Wong~(2011)~\cite{wong2011}. O painel de seleção mostra uma pré-visualização das três cores principais antes de o utilizador confirmar, para que possa ver o efeito sem ter de andar a mudar às cegas. A alteração responde diretamente à Heurística~7 de Nielsen --- flexibilidade e eficiência --- que preconiza que a interface se adapte a diferentes perfis de utilizadores~\cite{nielsen1994}.
+
+\section{Política de Privacidade}
+\label{chap5:sec:alt2}
+
+Outra adição não prevista foi a secção de Política de Privacidade no perfil. O \ac{RGPD} exige que os utilizadores sejam informados sobre o tratamento dos seus dados mesmo em contexto académico, e mesmo quando tudo fica guardado localmente. Mas há também uma razão de \ac{UX}: um utilizador que não sabe o que acontece com os seus dados tende a usar a aplicação com desconfiança. A política é curta e direta --- explica o âmbito educacional da aplicação, o que a API recebe, e como apagar os dados locais --- e isso é suficiente para gerir as expectativas de forma honesta.
+
+\section{Tipografia --- Remoção da Playfair Display}
+\label{chap5:sec:alt3}
+
+O protótipo usava Playfair Display nos títulos e Inter no corpo. Na implementação passámos a usar apenas Inter em toda a interface. O motivo foi essencialmente prático: ao renderizar em ecrãs de densidade intermédia, as serifas da Playfair tinham aliasing visível que tornava os títulos menos nítidos do que o texto em Inter. Além disso, manter duas famílias tipográficas num ecrã pequeno criava um atrito visual que não justificava qualquer benefício real --- a hierarquia ficou igualmente clara usando apenas pesos diferentes da Inter.

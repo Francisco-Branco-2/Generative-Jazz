@@ -1,0 +1,83 @@
+\chapter{Manual do Utilizador}
+\label{chap:manual}
+
+A aplicação funciona em qualquer browser moderno (Chrome 90+, Firefox 88+, Safari 14+), sem instalação. Precisa de ligação à internet para gerar progressões e reproduzir áudio; a biblioteca pessoal fica disponível localmente mesmo sem rede.
+
+\section{Acesso e Autenticação}
+\label{chap3:sec:auth}
+
+Ao abrir a aplicação aparece o ecrã de boas-vindas (Figura~\ref{fig:auth}a) com dois botões: \textbf{Começar} para criar conta e \textbf{Entrar} para quem já tem. O registo (Figura~\ref{fig:auth}b) pede nome, email e palavra-passe com pelo menos 8 caracteres. Os dados ficam guardados localmente no dispositivo --- nada é enviado para servidores externos. Para entrar basta o email e a palavra-passe (Figura~\ref{fig:auth}c).
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{01_splash.png}
+  \caption{Boas-vindas.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{03_register.png}
+  \caption{Registo.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{02_login.png}
+  \caption{Login.}
+\end{subfigure}
+\caption{Ecrãs de acesso à aplicação.}
+\label{fig:auth}
+\end{figure}
+
+\section{Ecrã Principal e Geração}
+\label{chap3:sec:home-geracao}
+
+Depois de entrar, o utilizador chega ao ecrã principal (Figura~\ref{fig:home-gen}a) com uma saudação que muda com a hora do dia, o botão \textbf{Gerar} e as progressões mais recentes. Para criar uma nova, toca-se em \textbf{Gerar} e configuram-se três parâmetros (Figura~\ref{fig:home-gen}b):
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Tonalidade} --- selecionada no Círculo das Quintas interativo, ou ``Aleatório'';
+  \item \textbf{Estrutura} --- Random, AABA, AABC ou ABAB;
+  \item \textbf{Modulação} --- Random, Dominant, Relative, Subdominant, Parallel ou Chromatic.
+\end{itemize}
+
+Depois de tocar em \textbf{Gerar Progressão}, uma animação indica que o pedido está a ser processado.
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{04_home.png}
+  \caption{Ecrã principal.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{05_generation.png}
+  \caption{Configuração.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{06_result.png}
+  \caption{Resultado.}
+\end{subfigure}
+\caption{Fluxo principal de geração de uma progressão.}
+\label{fig:home-gen}
+\end{figure}
+
+\section{Resultado, Biblioteca e Perfil}
+\label{chap3:sec:resto}
+
+O ecrã de resultado (Figura~\ref{fig:home-gen}c) mostra a progressão por compassos, um leitor de áudio com play/pausa e barra de progresso, e o cabeçalho com tonalidade, estrutura e modulação. Durante a reprodução o acorde ativo é destacado em tempo real. Para guardar basta tocar em \textbf{Guardar}, editar o nome se necessário, e confirmar.
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{07_library.png}
+  \caption{Biblioteca.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{08_profile.png}
+  \caption{Perfil.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{09_colorblind_sheet.png}
+  \caption{Acessibilidade.}
+\end{subfigure}
+\caption{Biblioteca, perfil e painel de acessibilidade cromática.}
+\label{fig:lib-profile}
+\end{figure}
+
+A \textbf{Biblioteca} (Figura~\ref{fig:lib-profile}a) lista todas as progressões guardadas com pesquisa em tempo real e reprodução rápida em cada item. O \textbf{Perfil} (Figura~\ref{fig:lib-profile}b) permite editar nome e foto, alterar a palavra-passe, configurar os modos de acessibilidade cromática (Figura~\ref{fig:lib-profile}c) e consultar a política de privacidade. A navegação entre ecrãs autenticados é feita pela barra inferior com ícones de casa, nota musical e utilizador.

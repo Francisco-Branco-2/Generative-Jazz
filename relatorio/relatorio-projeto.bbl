@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{nielsen1994}
+Jakob Nielsen.
+\newblock {\em Usability Engineering}.
+\newblock Morgan Kaufmann, 1994.
+
+\bibitem{wcag21}
+{W3C}.
+\newblock Web content accessibility guidelines ({WCAG}) 2.1, 2018.
+\newblock [Online] \url{https://www.w3.org/TR/WCAG21/}. Último acesso a Maio
+  de 2026.
+
+\bibitem{bda2023}
+{British Dyslexia Association}.
+\newblock Dyslexia style guide, 2023.
+\newblock [Online]
+  \url{https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide}.
+  Último acesso a Maio de 2026.
+
+\bibitem{wong2011}
+Bang Wong.
+\newblock Color blindness.
+\newblock {\em Nature Methods}, 8(6):441, 2011.
+
+\bibitem{birch2012}
+Jennifer Birch.
+\newblock Worldwide prevalence of red-green color deficiency.
+\newblock {\em Journal of the Optical Society of America A}, 29(3):313--320,
+  2012.
+
+\end{thebibliography}

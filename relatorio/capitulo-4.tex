@@ -1,0 +1,84 @@
+\chapter{Decisões de Design e Acessibilidade}
+\label{chap:design}
+
+\section{Paleta de Cores}
+\label{chap4:sec:cores}
+
+A interface usa um tema escuro com um acento dourado/âmbar. Não foi uma escolha por moda --- cada cor tem uma razão de ser.
+
+O fundo usa \texttt{\#0e0c0a}, um preto com subtom castanho-quente em vez do preto puro. Em ecrãs OLED, o contraste extremo entre fundo preto e texto branco pode ser desconfortável em sessões longas; o subtom quente atenua isso. Visualmente também remete para o ambiente de um clube de jazz, com iluminação ténue, o que se enquadra bem no tema da aplicação.
+
+O acento dourado (\texttt{\#c9a84c}) é a cor de todos os elementos interativos. A associação é direta: saxofone, trompete, trombone --- os instrumentos centrais do jazz têm exatamente esta cor de latão. Além disso o dourado sobre fundo escuro cumpre os rácios de contraste do \ac{WCAG}~2.1 nível AA~\cite{wcag21}, o que não é coincidência. O texto principal usa \texttt{\#f0ebe0}, um branco ligeiramente creme, e o secundário \texttt{\#a09080}. Ambos mantêm a coerência quente da paleta e criam hierarquia clara sem precisar de tamanhos de letra muito diferentes.
+
+Para estados de erro e sucesso escolhemos deliberadamente um vermelho suave (\texttt{\#d95555}) e um verde-azulado (\texttt{\#5cb88a}) em vez de verde puro. A razão é simples: verde e vermelho são as cores mais problemáticas para pessoas com daltonismo, e o verde-azulado já cria distância percetiva suficiente para reduzir confusões mesmo sem ativar nenhum modo de acessibilidade.
+
+\section{Tipografia}
+\label{chap4:sec:tipografia}
+
+Usámos exclusivamente a família \textbf{Inter} em pesos de 300 a 700. O protótipo da Parte~1 combinava Playfair Display nos títulos com Inter no corpo, mas abandonámos essa combinação por três razões práticas.
+
+Primeiro, as serifas da Playfair ficavam com aliasing visível a densidades típicas de smartphones Android. Segundo, dois sistemas tipográficos num espaço compacto criam atrito visual sem benefício real --- a hierarquia que a Playfair pretendia introduzir consegue-se perfeitamente com Inter Bold a um tamanho ligeiramente maior. Terceiro, fontes sans-serif com formas abertas são mais fáceis de ler para utilizadores com dislexia~\cite{bda2023}, e a Inter foi desenhada especificamente para interfaces digitais, com aberturas largas nos caracteres e altura-x elevada.
+
+\begin{table}[!htb]
+\centering\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Elemento} & \textbf{Peso} & \textbf{Tamanho} & \textbf{Uso} \\
+\midrule
+Títulos de ecrã   & 700 Bold     & 20--22 px & Cabeçalho de cada ecrã \\
+Títulos de secção & 600 SemiBold & 17--18 px & Títulos de cards e painéis \\
+Corpo             & 400 Regular  & 14--15 px & Texto corrido \\
+Labels            & 500--600     & 11--13 px & Categorias, metadados \\
+Texto secundário  & 300--400     & 11--13 px & Datas, dicas \\
+\bottomrule
+\end{tabular}
+\caption{Hierarquia tipográfica Inter na interface do GenJazz.}
+\label{tab:tipografia}
+\end{table}
+
+\section{Acessibilidade para Utilizadores com Daltonismo}
+\label{chap4:sec:daltonismo}
+
+A aplicação inclui três modos de acessibilidade cromática, acessíveis nas definições do perfil. As paletas foram baseadas na paleta de Wong~(2011)~\cite{wong2011}, desenvolvida para garantir discriminabilidade nos principais tipos de deficiência de visão cromática. Cada modo substitui apenas as variáveis CSS de acento, erro e sucesso --- os fundos e textos mantêm-se inalterados.
+
+\begin{table}[!htb]
+\centering\small
+\begin{tabular}{lp{3.2cm}p{3.2cm}p{3.2cm}}
+\toprule
+\textbf{Papel} & \textbf{Deuteranopia} & \textbf{Protanopia} & \textbf{Tritanopia} \\
+\midrule
+Acento  & \texttt{\#56B4E9} azul céu    & \texttt{\#56B4E9} azul céu    & \texttt{\#D55E00} vermelhão \\
+Erro    & \texttt{\#E69F00} laranja      & \texttt{\#E69F00} laranja      & \texttt{\#CC3311} verm.-laranja \\
+Sucesso & \texttt{\#0072B2} azul escuro  & \texttt{\#009E73} verde-azulado & \texttt{\#009E73} verde-azulado \\
+\bottomrule
+\end{tabular}
+\caption{Paletas de acessibilidade para os três tipos de daltonismo suportados.}
+\label{tab:daltonismo}
+\end{table}
+
+A deuteranopia --- dificuldade em perceber o verde, presente em cerca de 5--6\% da população masculina~\cite{birch2012} --- foi o caso que mais justificou esta funcionalidade, uma vez que o dourado da paleta padrão tem uma componente verde que o torna difícil de distinguir neste modo de visão. Para a protanopia (ausência de sensibilidade ao vermelho, \textasciitilde1\%) a paleta é parecida mas com o sucesso ajustado, pois protanopes conseguem distinguir verdes deslocados para o ciano. Para a tritanopia (afeta o azul, \textasciitilde0,01\%) o dourado é substituído por vermelhão, que não depende da distinção azul/amarelo.
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{04_home.png}
+  \caption{Padrão.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{11_home_deuteranopia.png}
+  \caption{Deuteranopia.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.28\textwidth}
+  \includegraphics[width=\textwidth]{12_generation_tritanopia.png}
+  \caption{Tritanopia.}
+\end{subfigure}
+\caption{Comparação entre o modo padrão e dois modos de acessibilidade cromática.}
+\label{fig:daltonismo}
+\end{figure}
+
+A implementação é feita exclusivamente via variáveis CSS: ao mudar o modo, adiciona-se o atributo \texttt{data-colorblind} ao elemento \texttt{<html>} e as variáveis corretas são automaticamente aplicadas em toda a interface, sem alterar nenhum componente individualmente.
+
+\section{Outras Considerações de Acessibilidade}
+\label{chap4:sec:outras}
+
+Para além dos modos de daltonismo, tomámos algumas decisões que melhoram a acessibilidade geral. Todos os pares de cor texto/fundo foram verificados para cumprir o nível AA do \ac{WCAG}~2.1. Os botões e elementos tácteis têm pelo menos 44$\times$44~px, seguindo as recomendações da Apple e do W3C. A hierarquia da interface é transmitida por tamanho, peso e posição, não dependendo só de cor --- o que faz com que a interface funcione bem mesmo no modo de alto contraste do sistema operativo.

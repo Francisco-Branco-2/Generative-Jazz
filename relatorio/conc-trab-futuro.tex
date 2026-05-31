@@ -1,0 +1,19 @@
+\chapter{Conclusões e Trabalho Futuro}
+\label{chap:conc-trab-futuro}
+
+\section{Conclusões}
+\label{sec:conc-princ}
+
+O GenJazz cumpriu o objetivo principal desta fase: transformar o protótipo em algo que funciona de verdade, fiel ao conceito original mas com os ajustes que só a implementação real consegue revelar. O fluxo central --- gerar uma progressão, ouvi-la e guardá-la --- é rápido e direto, com poucos passos entre o utilizador e o resultado. A arquitetura \textit{local-first} funcionou bem na prática: a interface responde de imediato sem depender da latência da rede para operações básicas.
+
+Do ponto de vista de \ac{IHC}, a funcionalidade de acessibilidade cromática foi provavelmente a contribuição mais significativa desta fase. Não estava prevista no protótipo e surgiu durante a implementação quando percebemos que a paleta padrão excluía uma parte dos utilizadores sem qualquer necessidade. Resolver isso com paletas baseadas em investigação publicada e uma implementação via variáveis CSS globais foi uma escolha que valeu a pena.
+
+\section{O Que Não Foi Implementado}
+\label{sec:nao-implementado}
+
+Algumas funcionalidades esboçadas na Parte~1 não chegaram a esta versão. A \textbf{sincronização de conta entre dispositivos} implicaria um servidor de autenticação próprio que está fora do âmbito deste projeto --- a API pública do GenJazz não tem suporte para autenticação de utilizadores. O \textbf{modo offline completo com cache de áudio} exigiria um Service Worker com estratégia de cache de ficheiros MP3, o que não foi desenvolvido por falta de tempo. A \textbf{exportação de partituras} dependeria de uma biblioteca de renderização musical (como VexFlow) cuja integração teria ultrapassado o âmbito da \ac{IHC}.
+
+\section{Trabalho Futuro}
+\label{sec:trab-futuro}
+
+As três funcionalidades não implementadas são os candidatos mais naturais para uma versão futura. Para além destas, seria útil fazer uma sessão de testes de usabilidade com utilizadores reais --- a avaliação interna tem limites óbvios. Adicionar atributos ARIA adequados para suporte a leitores de ecrã seria também um passo importante para tornar a aplicação verdadeiramente inclusiva.

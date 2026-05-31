@@ -1,0 +1,73 @@
+\chapter{Alterações ao Protótipo da 1.\textsuperscript{a} Parte}
+\label{chap:alteracoes}
+
+\section{Introdução}
+\label{chap6:sec:intro}
+
+O protótipo de baixa-média fidelidade apresentado na primeira parte do projeto constituiu a base de trabalho para esta fase de implementação. No entanto, ao passar do protótipo para a aplicação funcional, surgiram situações em que foi necessário rever ou complementar decisões anteriores. Esta secção identifica as alterações mais relevantes, descrevendo o que foi modificado e explicando a razão para cada mudança.
+
+\section{Alteração 1 --- Acessibilidade Cromática para Utilizadores com Daltonismo}
+\label{chap6:sec:alt1}
+
+\subsection{O que foi adicionado}
+
+Foi implementada uma funcionalidade de acessibilidade de cor no ecrã de Perfil, acessível através da opção ``Acessibilidade de Cores''. Esta funcionalidade não estava prevista no protótipo da Parte~1. Oferece quatro modos --- Padrão, Deuteranopia, Protanopia e Tritanopia --- com paletas distintas para cada tipo de deficiência de visão cromática. A mudança é imediata, sem recarregamento da página, e a preferência persiste entre sessões.
+
+\subsection{Porquê esta alteração}
+
+O protótipo original usava uma paleta dourada sobre fundo escuro que, apesar de coerente do ponto de vista temático, apresentava problemas para utilizadores com deuteranopia: o dourado tem uma componente de verde que o torna difícil de distinguir de outros elementos da interface para este grupo de utilizadores.
+
+A implementação desta funcionalidade responde à Heurística~7 de Nielsen (flexibilidade e eficiência de utilização), que preconiza que a interface se adapte a diferentes perfis de utilizadores~\cite{nielsen1994}. A deuteranopia afeta aproximadamente 5 a 6\% da população masculina~\cite{birch2012}, o que representa uma fração significativa dos potenciais utilizadores de uma aplicação musical. Não incluir suporte a diferentes tipos de visão cromática seria uma barreira de exclusão num projeto que se pretende universalmente utilizável.
+
+A escolha de usar a paleta de Wong~(2011)~\cite{wong2011} em vez de definir cores arbitrárias garante que as decisões têm base científica e foram testadas empiricamente, o que aumenta a confiança nos resultados.
+
+\subsection{Impacto na experiência do utilizador}
+
+A funcionalidade permite que utilizadores com diferentes tipos de deficiência cromática usem a aplicação sem perda de informação visual. A pré-visualização das cores no painel de seleção (Figura~\ref{fig:colorblind-sheet-alt}) torna a escolha informada, sem que o utilizador precise de selecionar tentativa a tentativa.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.35\textwidth]{09_colorblind_sheet.png}
+\caption{Painel de seleção do modo de acessibilidade cromática, adicionado face ao protótipo da Parte~1.}
+\label{fig:colorblind-sheet-alt}
+\end{figure}
+
+\section{Alteração 2 --- Política de Privacidade e Transparência de Dados}
+\label{chap6:sec:alt2}
+
+\subsection{O que foi adicionado}
+
+Foi adicionada uma secção de Política de Privacidade acessível a partir do ecrã de Perfil, na secção ``Informações''. O conteúdo apresenta, em linguagem simples e direta: a finalidade da aplicação (exclusivamente educacional, sem fins comerciais); o âmbito do tratamento de dados musicais (processados pela \ac{API} GenJazz para fins demonstrativos, não associados a dados pessoais identificáveis); o estatuto do projeto (protótipo académico sem garantias de disponibilidade ou suporte); e os direitos do utilizador, nomeadamente como eliminar todos os dados armazenados localmente.
+
+Esta secção não estava prevista no protótipo inicial.
+
+\subsection{Porquê esta alteração}
+
+Dois fatores motivaram esta adição. O primeiro é legal: o \ac{RGPD} exige que os utilizadores sejam informados sobre o tratamento dos seus dados, mesmo em contexto académico e mesmo quando o armazenamento é feito localmente no dispositivo do utilizador. A existência de uma política de privacidade cumpre este requisito mínimo.
+
+O segundo fator é de \ac{UX}: investigação em \ac{IHC} demonstra que a transparência no tratamento de dados é um dos fatores mais determinantes para a confiança e adoção de sistemas digitais~\cite{nielsen2000}. Um utilizador que não sabe o que acontece com os seus dados tende a usar a aplicação com reservas. A política de privacidade serve também para gerir as expetativas: ao perceber que está perante um protótipo académico, o utilizador enquadra corretamente as limitações funcionais que possa encontrar.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.35\textwidth]{10_privacy_sheet.png}
+\caption{Painel de Política de Privacidade, adicionado face ao protótipo da Parte~1.}
+\label{fig:privacy}
+\end{figure}
+
+\section{Alteração 3 --- Substituição da Tipografia Serifada nos Títulos}
+\label{chap6:sec:alt3}
+
+\subsection{O que foi alterado}
+
+O protótipo da Parte~1 usava Playfair Display (com serifa) nos títulos e cabeçalhos dos ecrãs, combinada com Inter para o texto de corpo. Na implementação final, esta combinação foi abandonada e todos os elementos textuais passaram a usar exclusivamente Inter em diferentes pesos.
+
+\subsection{Porquê esta alteração}
+
+A decisão resultou de três observações feitas durante a implementação. A primeira foi técnica: ao renderizar Playfair Display em ecrãs de densidade intermédia, as serifas apresentavam \textit{aliasing} ligeiro que tornava os títulos menos nítidos do que os parágrafos em Inter. A segunda foi de coerência: a coexistência de dois sistemas tipográficos distintos num espaço compacto como uma interface móvel criava um atrito visual desnecessário. A terceira foi de funcionalidade: a hierarquia que a Playfair Display pretendia introduzir era replicável com Inter Bold a um tamanho ligeiramente maior, sem os custos visuais da mistura de famílias tipográficas.
+
+A manutenção de uma única família tipográfica ao longo de toda a interface está em linha com as recomendações das \textit{Human Interface Guidelines} da Apple e do Material Design da Google, que reservam opções serifadas apenas para conteúdo editorial de longa forma, não para \ac{UI}.
+
+\section{Conclusões}
+\label{chap6:sec:concs}
+
+As três alterações descritas neste capítulo têm em comum o facto de responderem a requisitos que não estavam completamente definidos na fase de prototipagem inicial. A acessibilidade cromática e a política de privacidade foram identificadas durante a implementação como lacunas que seria irresponsável ignorar; a alteração tipográfica resultou de uma avaliação prática do resultado visual. Em conjunto, estas mudanças tornaram o produto final mais inclusivo, mais transparente e mais coerente do que o protótipo de que partiu.

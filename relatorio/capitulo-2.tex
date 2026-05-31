@@ -1,0 +1,43 @@
+\chapter{Arquitetura do Sistema}
+\label{chap:arquitetura}
+
+O GenJazz é uma \ac{SPA} construída com \textbf{React~18} e \textbf{Vite}, que apresenta a interface dentro de uma moldura de smartphone para deixar claro que a experiência foi pensada para mobile. A arquitetura segue um modelo cliente-servidor simples: toda a lógica de apresentação corre no browser do utilizador, e os dados musicais são fornecidos por uma API REST externa alojada em \texttt{genjazz-api.fly.dev}.
+
+\section{Stack e Organização do Código}
+\label{chap2:sec:stack}
+
+A escolha do React deveu-se à sua abordagem declarativa e ao sistema de componentes, que tornam mais fácil gerir os vários estados possíveis de uma interface com tantos elementos dinâmicos. O Vite foi preferido ao Create React App simplesmente por ser mais rápido --- tempos de arranque e hot-reload visivelmente melhores durante o desenvolvimento.
+
+O código está organizado em \texttt{src/screens/} para os ecrãs completos, \texttt{src/components/} para componentes reutilizáveis (como o \texttt{CircleOfFifths}, o \texttt{AudioPlayer} e o \texttt{MeasureGrid}), e \texttt{src/hooks/} para lógica partilhada.
+
+\section{Gestão de Estado e Autenticação}
+\label{chap2:sec:estado}
+
+O estado global é gerido por dois contextos React. O \texttt{AuthContext} trata da autenticação: registo, login e dados do utilizador. As palavras-passe são transformadas em hash SHA-256 via \texttt{crypto.subtle} antes de serem guardadas no \texttt{localStorage}. A sessão fica no \texttt{sessionStorage}, pelo que termina automaticamente quando se fecha o separador.
+
+O \texttt{ThemeContext} controla o modo de acessibilidade cromática ativo. Quando o utilizador muda o modo, é adicionado um atributo \texttt{data-colorblind} ao elemento \texttt{<html>}, o que faz com que as variáveis CSS de acento, erro e sucesso sejam substituídas pela paleta correspondente, sem tocar em nenhum componente individualmente.
+
+Toda a lógica da API foi centralizada no hook \texttt{useGenJazz}, que trata do carregamento do catálogo, das seleções do utilizador, da geração de progressões, da conversão para MP3 e da biblioteca pessoal.
+
+\section{API GenJazz}
+\label{chap2:sec:api}
+
+A Tabela~\ref{tab:api-endpoints} lista os endpoints utilizados.
+
+\begin{table}[!htb]
+\centering\small
+\begin{tabular}{llp{5.5cm}}
+\toprule
+\textbf{Método} & \textbf{Endpoint} & \textbf{Descrição} \\
+\midrule
+GET & \texttt{/api/keys}, \texttt{/api/structures}, \texttt{/api/modulations} & Catálogos de opções disponíveis \\
+GET & \texttt{/api/generate/\{k\}/\{s\}/\{m\}} & Gera uma progressão \\
+GET & \texttt{/api/chords2mp3/\{chords\}} & Converte acordes em MP3 \\
+GET/POST/DELETE & \texttt{/api/chords/\{email\}/...} & Biblioteca pessoal (listar, guardar, apagar) \\
+\bottomrule
+\end{tabular}
+\caption{Endpoints da API GenJazz.}
+\label{tab:api-endpoints}
+\end{table}
+
+A biblioteca usa uma estratégia \textit{local-first}: as progressões são guardadas imediatamente no \texttt{localStorage} e a sincronização com a API acontece em segundo plano. Assim a aplicação funciona mesmo sem ligação à internet, com os dados locais disponíveis de imediato.
