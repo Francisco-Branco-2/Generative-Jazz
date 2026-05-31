@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.31)  31 MAY 2026 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.31)  31 MAY 2026 22:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1725,7 +1725,7 @@ Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
 Here is how much of TeX's memory you used:
  20642 strings out of 469278
  332985 string characters out of 5464906
- 793433 words of memory out of 6000000
+ 793439 words of memory out of 6000000
  49029 multiletter control sequences out of 15000+600000
  744172 words of font info for 119 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
@@ -1741,7 +1741,7 @@ public/lm/lmri12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmssb
 o10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on relatorio-projeto.pdf (22 pages, 849731 bytes).
+Output written on relatorio-projeto.pdf (22 pages, 849540 bytes).
 PDF statistics:
  402 PDF objects out of 1000 (max. 8388607)
  334 compressed objects within 4 object streams
